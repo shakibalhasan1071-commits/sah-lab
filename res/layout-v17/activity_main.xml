@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<include android:id="@id/main_topBar" android:layout_width="fill_parent" android:layout_height="84.0dip" layout="@layout/top_bar" />
+	<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+			<FrameLayout android:id="@id/preview" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+				<RelativeLayout android:layout_gravity="top" android:id="@id/previewPanel" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="4.0dip">
+					<FrameLayout android:id="@id/workingArea" android:background="@drawable/checkered_bg" android:padding="0.0dip" android:focusableInTouchMode="false" android:visibility="visible" android:layout_width="200.0dip" android:layout_height="200.0dip" android:layout_alignParentTop="false" android:layout_centerInParent="true">
+						<FrameLayout android:id="@id/bg_composite" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+							<com.imaginstudio.imagetools.pixellab.Image.BackgroundImageHolder android:id="@id/bg_holder" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+							<view android:id="@id/noise" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" class="com.imaginstudio.imagetools.pixellab.effects.noise_bg" />
+							<view android:id="@id/stripes" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" class="com.imaginstudio.imagetools.pixellab.effects.stripes_bg" />
+						</FrameLayout>
+					</FrameLayout>
+				</RelativeLayout>
+				<com.imaginstudio.imagetools.pixellab.ZoomWidget android:id="@id/zoom_widget" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+				<LinearLayout android:gravity="center" android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/grid_float_panel" android:background="@drawable/bg_round_transp_black" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip">
+					<ImageButton android:id="@id/grid_snap" android:background="@drawable/top_bar_button" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:onClick="gridOptionsClick" app:srcCompat="@drawable/magnet_24" />
+					<ImageButton android:id="@id/grid_settings" android:background="@drawable/top_bar_button" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:onClick="gridOptionsClick" app:srcCompat="@drawable/config_grid_24" />
+					<LinearLayout android:id="@id/grid_setting_holder" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+						<ImageButton android:id="@id/grid_add_v" android:background="@drawable/top_bar_button" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:onClick="gridOptionsClick" app:srcCompat="@drawable/add_v_24" />
+						<ImageButton android:id="@id/grid_add_h" android:background="@drawable/top_bar_button" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:onClick="gridOptionsClick" app:srcCompat="@drawable/add_h_24" />
+						<ImageButton android:id="@id/grid_rem" android:background="@drawable/top_bar_button" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:onClick="gridOptionsClick" app:srcCompat="@drawable/rem_guide_24" />
+						<ImageButton android:id="@id/grid_pos" android:background="@drawable/top_bar_button" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:onClick="gridOptionsClick" app:srcCompat="@drawable/guide_pos_24" />
+						<ImageButton android:id="@id/grid_reset" android:background="@drawable/top_bar_button" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:onClick="gridOptionsClick" app:srcCompat="@drawable/reset_24" />
+					</LinearLayout>
+				</LinearLayout>
+			</FrameLayout>
+			<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/toolsPanel" android:background="@drawable/gradient_tab_bg" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="140.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:layout_alignParentStart="true" />
+		</LinearLayout>
+		<LinearLayout android:orientation="vertical" android:id="@id/layers_layout" android:background="@drawable/bg_layers" android:visibility="invisible" android:clickable="false" android:layout_width="@dimen/layers_layout_width" android:layout_height="fill_parent">
+			<ScrollView android:id="@id/layers_holder_scroll" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="false" android:layout_weight="1.0">
+				<com.imaginstudio.imagetools.pixellab.layers.LayersHolder android:id="@id/layers_holder" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+			</ScrollView>
+			<LinearLayout android:gravity="right" android:orientation="horizontal" android:paddingRight="0.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="40.0dip">
+				<LinearLayout android:gravity="center_horizontal" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:animateLayoutChanges="true">
+					<ImageButton android:layout_gravity="center_vertical" android:id="@id/layers_layout_delete" android:background="@drawable/round_grey_shadow_button" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/layers_select_delete" android:scaleType="centerInside" android:onClick="layersSelectClick" />
+					<ImageButton android:layout_gravity="center_vertical" android:id="@id/layers_layout_edit" android:background="@drawable/round_grey_shadow_button" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/layers_select_edit" android:scaleType="centerInside" android:onClick="layersSelectClick" />
+					<ImageButton android:layout_gravity="center_vertical" android:id="@id/layers_layout_merge" android:background="@drawable/round_grey_shadow_button" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/layers_select_merge" android:scaleType="centerInside" android:onClick="layersSelectClick" />
+					<ImageButton android:layout_gravity="center_vertical" android:id="@id/layers_layout_selection" android:background="@drawable/round_grey_shadow_button" android:visibility="visible" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/layers_select_start" android:scaleType="centerInside" android:onClick="layersSelectClick" />
+				</LinearLayout>
+				<ImageButton android:layout_gravity="center_vertical" android:id="@id/layers_layout_handle" android:background="@drawable/layers_handle_bg" android:visibility="visible" android:layout_width="26.0dip" android:layout_height="30.0dip" android:layout_marginRight="1.0dip" android:src="@drawable/layers_handle" android:scaleType="centerInside" />
+			</LinearLayout>
+		</LinearLayout>
+		<ImageButton android:layout_gravity="right" android:id="@id/exit_fscreen" android:background="@drawable/flat_blue_button_round" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_margin="5.0dip" android:src="@drawable/no_fullscreen" />
+	</FrameLayout>
+</LinearLayout>
